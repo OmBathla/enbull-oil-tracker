@@ -3,7 +3,14 @@ export function renderRecords(records, tbodyEl) {
 
   if (records.length === 0) {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td colspan="9" class="empty-state">No matching records — adjust your filters, or add a new customer above.</td>`;
+    tr.innerHTML = `
+      <td colspan="9">
+        <div class="empty-box">
+          <div class="empty-icon">🛠️</div>
+          <p class="empty-title">No service records yet</p>
+          <p class="empty-sub">Add a customer above, or load sample data to see it in action.</p>
+        </div>
+      </td>`;
     tbodyEl.appendChild(tr);
     return;
   }

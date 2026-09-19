@@ -13,23 +13,35 @@
 
 <header class="site-header">
   <div class="brand">
-    <span class="brand-mark" aria-hidden="true">🛢️</span>
-    <h1>Enbull Oil Change Tracker</h1>
+    <div class="brand-logo">🛢️</div>
+    <div>
+      <h1>Enbull</h1>
+      <p class="brand-sub">Oil Change Tracker</p>
+    </div>
   </div>
-  <button id="loadSampleBtn" class="btn-ghost">Load sample data</button>
+  <button id="loadSampleBtn" class="btn-primary">Load sample data</button>
 </header>
 
 <section id="dashboard">
   <div class="stat-card">
-    <h3>Total Customers</h3>
+    <div class="stat-head">
+      <h3>Total Customers</h3>
+      <span class="icon-chip chip-blue">📋</span>
+    </div>
     <p id="totalCustomers">0</p>
   </div>
   <div class="stat-card due">
-    <h3>Due Soon</h3>
+    <div class="stat-head">
+      <h3>Due Soon</h3>
+      <span class="icon-chip chip-amber">⏳</span>
+    </div>
     <p id="dueSoonCount">0</p>
   </div>
   <div class="stat-card overdue">
-    <h3>Overdue</h3>
+    <div class="stat-head">
+      <h3>Overdue</h3>
+      <span class="icon-chip chip-red">⚠️</span>
+    </div>
     <p id="overdueCount">0</p>
   </div>
 </section>
@@ -79,7 +91,7 @@
       <button class="filter-btn" data-filter="Due Soon">Due Soon</button>
       <button class="filter-btn" data-filter="Overdue">Overdue</button>
     </div>
-    <button id="exportCsvBtn" class="btn-ghost">Export CSV</button>
+    <button id="exportCsvBtn" class="btn-secondary">Export CSV</button>
   </div>
 </section>
 
