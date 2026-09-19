@@ -71,24 +71,33 @@
 </section>
 
 <section id="searchSection">
-  <input type="text" id="searchInput" placeholder="Search by name or phone...">
+  <div class="toolbar">
+    <input type="text" id="searchInput" placeholder="Search by name or phone...">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="All">All</button>
+      <button class="filter-btn" data-filter="Safe">Safe</button>
+      <button class="filter-btn" data-filter="Due Soon">Due Soon</button>
+      <button class="filter-btn" data-filter="Overdue">Overdue</button>
+    </div>
+    <button id="exportCsvBtn" class="btn-ghost">Export CSV</button>
+  </div>
 </section>
 
 <section id="recordsSection">
   <table id="recordsTable">
     <thead>
-      <tr>
-        <th>Customer</th>
-        <th>Phone</th>
-        <th>Bike</th>
-        <th>Oil Product</th>
-        <th>Last Change</th>
-        <th>Next Due (km)</th>
-        <th>Next Due (date)</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
+  <tr>
+    <th data-key="customerName">Customer <span class="sort-indicator"></span></th>
+    <th data-key="phone">Phone <span class="sort-indicator"></span></th>
+    <th data-key="bikeModel">Bike <span class="sort-indicator"></span></th>
+    <th data-key="oilProduct">Oil Product <span class="sort-indicator"></span></th>
+    <th data-key="lastChangeDate">Last Change <span class="sort-indicator"></span></th>
+    <th data-key="nextDueMileage">Next Due (km) <span class="sort-indicator"></span></th>
+    <th data-key="nextDueDate">Next Due (date) <span class="sort-indicator"></span></th>
+    <th data-key="status">Status <span class="sort-indicator"></span></th>
+    <th>Actions</th>
+  </tr>
+</thead>
     <tbody id="recordsBody">
       <!-- rows injected by JS -->
     </tbody>
@@ -96,5 +105,6 @@
 </section>
 
 <script type="module" src="app.js"></script>
+<div id="toastContainer" class="toast-container"></div>
 </body>
 </html>

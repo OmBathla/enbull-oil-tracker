@@ -1,6 +1,13 @@
 export function renderRecords(records, tbodyEl) {
   tbodyEl.innerHTML = "";
 
+  if (records.length === 0) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td colspan="9" class="empty-state">No matching records — adjust your filters, or add a new customer above.</td>`;
+    tbodyEl.appendChild(tr);
+    return;
+  }
+
   records.forEach(record => {
     const tr = document.createElement("tr");
     const statusClass = record.status.replace(" ", "-");
@@ -16,6 +23,7 @@ export function renderRecords(records, tbodyEl) {
       <td><span class="badge ${statusClass}">${record.status}</span></td>
       <td>
         <button class="action-btn edit-btn" data-id="${record.id}">Edit</button>
+        <button class="action-btn print-btn" data-id="${record.id}">Receipt</button>
         <button class="action-btn delete-btn" data-id="${record.id}">Delete</button>
       </td>
     `;
@@ -29,4 +37,12 @@ export function renderDashboard(records) {
     records.filter(r => r.status === "Due Soon").length;
   document.getElementById("overdueCount").textContent =
     records.filter(r => r.status === "Overdue").length;
+}
+
+export function updateSortIndicators(activeKey, dir) {
+  document.querySelectorAll("th[data-key]").forEach(th => {
+    const indicator = th.querySelector(".sort-indicator");
+    if (!indicator) return;
+    indicator.textContent = th.dataset.key === activeKey ? (dir === 1 ? "▲" : "▼") : "";
+  });
 }
