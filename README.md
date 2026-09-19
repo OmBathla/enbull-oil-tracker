@@ -20,8 +20,12 @@ to see the dashboard populate immediately.
 - Add customer + bike details and log oil-change records
 - Auto-calculates next due mileage and date based on oil product interval
 - Status badges: **Safe / Due Soon / Overdue**
+- Filter records by status, sort by any column
 - Search customers by name or phone
 - Edit and delete records
+- Export records to CSV
+- Print a formatted service receipt per customer
+- Toast notifications for actions, with basic form validation
 - Dashboard: total customers, due-soon count, overdue count
 - Data persists locally via the Web Storage API (`localStorage`)
 
@@ -42,9 +46,9 @@ enbull-oil-tracker/
 ├── storage.js
 ├── calculations.js
 ├── render.js
-└── seedData.js
-
-
+├── seedData.js
+├── toast.js
+└── export.js
 
 ## How It Works
 1. Mechanic enters customer, bike, and oil-change details.
@@ -56,7 +60,7 @@ enbull-oil-tracker/
    page refreshes with no server.
 
 ## Setup & Run Locally
-1. Clone the repo: git clone https://github.com/OmBathla/enbull-oil-tracker.git
+1. Clone the repo:git clone https://github.com/OmBathla/enbull-oil-tracker.git
 cd enbull-oil-tracker
 2. Open with **VS Code** and install the **Live Server** extension.
 3. Right-click `index.html` → **Open with Live Server**.
@@ -71,7 +75,6 @@ _Add screenshots here — see `/screenshots` folder._
 - Backend + database (Node.js/Express + MongoDB) for multi-device sync
 - SMS/WhatsApp automated reminders via Twilio API
 - Multi-mechanic login and role-based access
-- Export records to CSV/PDF
 
 ## Learning Outcomes
 - Modular JavaScript architecture (separation of storage, logic, rendering)

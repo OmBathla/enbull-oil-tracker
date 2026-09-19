@@ -252,7 +252,7 @@ th[data-key]:hover { color: var(--accent); }
 td { padding: 12px; border-bottom: 1px solid var(--border); font-size: 14px; }
 tbody tr:hover { background: #fafbfe; }
 
-/* ---------- Empty state (dashed box, matches reference) ---------- */
+/* ---------- Empty state ---------- */
 .empty-box {
   text-align: center;
   padding: 48px 20px;
