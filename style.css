@@ -1,0 +1,285 @@
+:root {
+  --bg: #14171a;
+  --panel: #1d2126;
+  --panel-alt: #23282e;
+  --border: #323942;
+  --text: #edede7;
+  --text-muted: #9aa1ab;
+  --accent: #f2a93b;
+  --accent-dark: #c97f1e;
+  --safe: #4c9169;
+  --due: #d98f2b;
+  --overdue: #c24a3a;
+  --font-display: "Oswald", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 28px;
+  background: linear-gradient(180deg, #1a1e23, #14171a);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  font-size: 28px;
+}
+
+.site-header h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: 0.3px;
+  margin: 0;
+}
+
+.btn-ghost {
+  padding: 10px 18px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn-ghost:hover {
+  background: var(--accent);
+  color: #14171a;
+}
+
+/* ---------- Layout sections ---------- */
+#dashboard {
+  display: flex;
+  gap: 16px;
+  padding: 24px 28px 0;
+  flex-wrap: wrap;
+}
+
+#formSection, #searchSection, #recordsSection {
+  background: var(--panel);
+  margin: 20px 28px;
+  padding: 22px 24px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+/* ---------- Stat cards (gauge-plate style) ---------- */
+.stat-card {
+  flex: 1;
+  min-width: 180px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 16px 20px;
+}
+
+.stat-card.due { border-left-color: var(--due); }
+.stat-card.overdue { border-left-color: var(--overdue); }
+
+.stat-card h3 {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.stat-card p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 600;
+}
+
+/* ---------- Form ---------- */
+#formSection h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 20px;
+  margin: 0 0 20px 0;
+  color: var(--text);
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 24px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  display: block;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(242, 169, 59, 0.2);
+}
+
+button[type="submit"], #submitBtn {
+  grid-column: 1 / -1;
+  padding: 12px 20px;
+  background: var(--accent);
+  border: none;
+  color: #14171a;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+button[type="submit"]:hover { background: var(--accent-dark); }
+
+#cancelEditBtn {
+  grid-column: 1 / -1;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* ---------- Search ---------- */
+#searchInput {
+  width: 100%;
+  padding: 12px;
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ---------- Records table ---------- */
+#recordsSection {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+tbody tr:hover {
+  background: var(--panel-alt);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 32px 12px !important;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Status tags — styled like physical service stickers */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid;
+}
+
+.badge.Safe {
+  color: var(--safe);
+  border-color: var(--safe);
+  background: rgba(76, 145, 105, 0.12);
+}
+
+.badge.Due-Soon {
+  color: var(--due);
+  border-color: var(--due);
+  background: rgba(217, 143, 43, 0.12);
+}
+
+.badge.Overdue {
+  color: var(--overdue);
+  border-color: var(--overdue);
+  background: rgba(194, 74, 58, 0.12);
+}
+
+.action-btn {
+  padding: 6px 12px;
+  margin-right: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.edit-btn:hover { border-color: var(--accent); color: var(--accent); }
+.delete-btn:hover { border-color: var(--overdue); color: var(--overdue); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  .site-header { flex-direction: column; align-items: flex-start; }
+  form { grid-template-columns: 1fr; }
+  #dashboard { flex-direction: column; }
+}

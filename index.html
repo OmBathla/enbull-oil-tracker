@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enbull Oil Change Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">🛢️</span>
+    <h1>Enbull Oil Change Tracker</h1>
+  </div>
+  <button id="loadSampleBtn" class="btn-ghost">Load sample data</button>
+</header>
+
+<section id="dashboard">
+  <div class="stat-card">
+    <h3>Total Customers</h3>
+    <p id="totalCustomers">0</p>
+  </div>
+  <div class="stat-card due">
+    <h3>Due Soon</h3>
+    <p id="dueSoonCount">0</p>
+  </div>
+  <div class="stat-card overdue">
+    <h3>Overdue</h3>
+    <p id="overdueCount">0</p>
+  </div>
+</section>
+
+<section id="formSection">
+  <h2 id="formTitle">Add Customer & Oil Change Record</h2>
+  <form id="recordForm">
+    <input type="hidden" id="recordId">
+
+    <label>Customer Name</label>
+    <input type="text" id="customerName" required>
+
+    <label>Phone Number</label>
+    <input type="text" id="phone" required>
+
+    <label>Bike Model</label>
+    <input type="text" id="bikeModel" required>
+
+    <label>Current Mileage (km)</label>
+    <input type="number" id="currentMileage" required>
+
+    <label>Enbull Oil Product</label>
+    <select id="oilProduct" required>
+      <option value="">-- Select --</option>
+      <option value="Enbull Standard">Enbull Standard (3000km / 3mo)</option>
+      <option value="Enbull Synthetic">Enbull Synthetic (5000km / 6mo)</option>
+      <option value="Enbull Premium">Enbull Premium (7000km / 8mo)</option>
+    </select>
+
+    <label>Oil Change Date</label>
+    <input type="date" id="lastChangeDate" required>
+
+    <label>Mileage at Oil Change (km)</label>
+    <input type="number" id="lastChangeMileage" required>
+
+    <button type="submit" id="submitBtn">Add Record</button>
+    <button type="button" id="cancelEditBtn" style="display:none;">Cancel</button>
+  </form>
+</section>
+
+<section id="searchSection">
+  <input type="text" id="searchInput" placeholder="Search by name or phone...">
+</section>
+
+<section id="recordsSection">
+  <table id="recordsTable">
+    <thead>
+      <tr>
+        <th>Customer</th>
+        <th>Phone</th>
+        <th>Bike</th>
+        <th>Oil Product</th>
+        <th>Last Change</th>
+        <th>Next Due (km)</th>
+        <th>Next Due (date)</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="recordsBody">
+      <!-- rows injected by JS -->
+    </tbody>
+  </table>
+</section>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
