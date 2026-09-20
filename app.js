@@ -4,6 +4,16 @@ import { renderRecords, renderDashboard, updateSortIndicators } from "./modules/
 import { SAMPLE_RECORDS } from "./modules/seedData.js";
 import { showToast } from "./modules/toast.js";
 import { exportToCSV, printReceipt } from "./modules/export.js";
+import { requireAuth, getSession, logout } from "./modules/auth.js";
+
+requireAuth();
+const session = getSession();
+document.getElementById("userNameLabel").textContent = session ? session.name : "";
+
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  logout();
+  window.location.href = "login.html";
+});
 
 let records = loadRecords();
 let currentFilter = "All";
