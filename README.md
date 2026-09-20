@@ -13,10 +13,11 @@ business. This app solves that with zero infrastructure cost — no server,
 no database, works entirely in-browser.
 
 ## Try It Instantly
-No setup needed — click the live demo link above and try **Load Sample Data**
-to see the dashboard populate immediately.
+No setup needed — click the live demo link above, sign up for an account,
+then try **Load Sample Data** to see the dashboard populate immediately.
 
 ## Features
+- Account signup/login, with each account's records kept separate
 - Add customer + bike details and log oil-change records
 - Auto-calculates next due mileage and date based on oil product interval
 - Status badges: **Safe / Due Soon / Overdue**
@@ -36,11 +37,12 @@ to see the dashboard populate immediately.
 - Deployed on Vercel
 
 ## Project Structure
-
 enbull-oil-tracker/
 ├── index.html
+├── login.html
 ├── style.css
 ├── app.js
+├── auth-page.js
 ├── README.md
 └── modules/
 ├── storage.js
@@ -48,39 +50,54 @@ enbull-oil-tracker/
 ├── render.js
 ├── seedData.js
 ├── toast.js
-└── export.js
+├── export.js
+└── auth.js
 
 ## How It Works
-1. Mechanic enters customer, bike, and oil-change details.
-2. `calculations.js` computes the next due mileage/date using fixed
+1. A user signs up or logs in via `login.html`. Credentials and session are
+   stored in `localStorage` — this is a front-end simulation of auth, suited
+   to this project's scope, not a production-grade security setup.
+2. Each account's service records are stored under its own key
+   (`enbullRecords_<email>`), so different accounts never see each other's data.
+3. Mechanic enters customer, bike, and oil-change details.
+4. `calculations.js` computes the next due mileage/date using fixed
    per-product intervals (e.g., Enbull Standard = 3000 km / 3 months).
-3. Status is derived by comparing current mileage/date against the due
+5. Status is derived by comparing current mileage/date against the due
    values — Overdue, Due Soon (within 300 km or 7 days), or Safe.
-4. All records are saved to `localStorage` as JSON, so data survives
-   page refreshes with no server.
 
 ## Setup & Run Locally
 1. Clone the repo:git clone https://github.com/OmBathla/enbull-oil-tracker.git
 cd enbull-oil-tracker
 2. Open with **VS Code** and install the **Live Server** extension.
-3. Right-click `index.html` → **Open with Live Server**.
+3. Right-click `login.html` → **Open with Live Server**.
    (Plain double-click won't work — this app uses ES Modules, which
    browsers block on the `file://` protocol.)
-4. Click **Load Sample Data** to see it populated, or add your own records.
+4. Sign up for an account, then click **Load Sample Data** to see it populated.
 
 ## Screenshots
 _Add screenshots here — see `/screenshots` folder._
 
+## Testing
+| Test Case | Input | Expected Result | Status |
+|---|---|---|---|
+| Add valid record | Complete form with valid mileage | Record appears, status calculated correctly | ✅ Passed |
+| Invalid mileage | Current mileage < last change mileage | Error toast shown, record not saved | ✅ Passed |
+| Status calculation | Mileage/date past due threshold | Status shows "Overdue" | ✅ Passed |
+| Search | Partial customer name | Table filters to matching records | ✅ Passed |
+| Two accounts | Sign up as two different users | Each sees only their own records | ✅ Passed |
+
 ## Future Scope
-- Backend + database (Node.js/Express + MongoDB) for multi-device sync
+- Backend + database (Node.js/Express + MongoDB) for real multi-device sync
+- Password hashing and proper server-side authentication
 - SMS/WhatsApp automated reminders via Twilio API
 - Multi-mechanic login and role-based access
 
 ## Learning Outcomes
-- Modular JavaScript architecture (separation of storage, logic, rendering)
+- Modular JavaScript architecture (separation of storage, logic, rendering, auth)
 - DOM manipulation without a framework
 - Working with the Web Storage API
 - Designing a real-world calculation engine (date + mileage logic)
+- Implementing a client-side authentication flow with session persistence
 - Deploying a static web app with Vercel and version control with Git/GitHub
 
 ## Author

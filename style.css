@@ -376,3 +376,58 @@ tbody tr:hover { background: #fafbfe; }
   .header-actions { flex-direction: column; align-items: flex-start; width: 100%; gap: 10px; }
   .user-chip { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 10px; width: 100%; justify-content: space-between; }
 }
+/* ---------- Dark theme ---------- */
+html[data-theme="dark"] {
+  --bg: #12151b;
+  --panel: #1b1f27;
+  --border: #2b3140;
+  --text: #e7e9ee;
+  --text-muted: #99a1ad;
+  --accent: #7c93f5;
+  --accent-dark: #6178e0;
+  --accent-light: #232a42;
+  --safe: #34c77b;
+  --due: #f0a63c;
+  --overdue: #f0574a;
+}
+
+html[data-theme="dark"] .stat-card p,
+html[data-theme="dark"] .site-header h1 {
+  color: var(--text);
+}
+
+html[data-theme="dark"] tbody tr:hover {
+  background: #1f2530;
+}
+
+html[data-theme="dark"] .badge.Safe { background: rgba(52, 199, 123, 0.12); }
+html[data-theme="dark"] .badge.Due-Soon { background: rgba(240, 166, 60, 0.12); }
+html[data-theme="dark"] .badge.Overdue { background: rgba(240, 87, 74, 0.12); }
+
+body, .stat-card, #formSection, #searchSection, #recordsSection, .auth-card {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* ---------- Theme toggle button ---------- */
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+.icon-btn:hover { border-color: var(--accent); }
+
+.auth-theme-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.auth-body { position: relative; }

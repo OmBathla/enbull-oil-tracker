@@ -1,3 +1,7 @@
+import { initTheme, toggleTheme } from "./modules/theme.js";
+
+initTheme();
+document.getElementById("themeToggleBtn").addEventListener("click", toggleTheme);
 import { signup, login } from "./modules/auth.js";
 import { showToast } from "./modules/toast.js";
 

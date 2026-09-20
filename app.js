@@ -14,6 +14,10 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
   logout();
   window.location.href = "login.html";
 });
+import { initTheme, toggleTheme } from "./modules/theme.js";
+
+initTheme();
+document.getElementById("themeToggleBtn").addEventListener("click", toggleTheme);
 
 let records = loadRecords();
 let currentFilter = "All";
