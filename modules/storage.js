@@ -1,12 +1,18 @@
-const STORAGE_KEY = "enbullRecords";
+import { getSession } from "./auth.js";
+
+function getStorageKey() {
+  const session = getSession();
+  const email = session ? session.email : "guest";
+  return `enbullRecords_${email}`;
+}
 
 export function loadRecords() {
-  const data = localStorage.getItem(STORAGE_KEY);
+  const data = localStorage.getItem(getStorageKey());
   return data ? JSON.parse(data) : [];
 }
 
 export function saveRecords(records) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+  localStorage.setItem(getStorageKey(), JSON.stringify(records));
 }
 
 export function generateId() {
