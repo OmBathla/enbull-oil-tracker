@@ -431,3 +431,19 @@ body, .stat-card, #formSection, #searchSection, #recordsSection, .auth-card {
 }
 
 .auth-body { position: relative; }
+
+.brand-logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+.auth-brand .brand-logo-img {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 12px;
+  border-radius: 12px;
+}
